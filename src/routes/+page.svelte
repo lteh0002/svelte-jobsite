@@ -1,6 +1,12 @@
 <script>
   import Header from "./Header.svelte";
+  import humanize from 'humanize-plus'
+  import { goto } from '$app/navigation';
 	export let data
+
+  function applyJob(id) {
+    goto(`./jobs/${id}`)
+  }
 </script>
 
 <Header />
@@ -13,7 +19,7 @@
   
         <h3 class="font-bold mt-3">{job.location}</h3>
         <span class="text-sm font-bold">
-          USD {job.minAnnualCompensation} - USD {job.maxAnnualCompensation} yearly
+          <span class="text-sm">USD {humanize.formatNumber(job.minAnnualCompensation)} - USD {humanize.formatNumber(job.maxAnnualCompensation)} yearly</span>
         </span>
   
         <div class="mt-4 ">
@@ -30,7 +36,7 @@
         </div>
                   
         <div class="card-actions justify-end">
-          <button class="btn btn-outline">Apply</button>
+          <button on:click={applyJob(job.id)} class="btn btn-outline">Apply</button>
         </div>
       </div>
     </div>
