@@ -1,12 +1,30 @@
 <script>
   import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+  import { isLoggedIn } from './../utils/auth.js'
+  import {logOut} from './../utils/auth.js'
+  let userLoggedIn
+  let userLoggedOut
+  onMount(async () => {
+    userLoggedIn = await isLoggedIn()
+    return userLoggedIn
+  })
 
-  function goHomePage() {
+  async function logUserOut() {
+    userLoggedOut = await logOut()
+    return userLoggedOut
+  }
+
+  export function goHomePage() {
     goto('http://localhost:5173')
   }
 
   function goSignUp() {
     goto('./users/new')
+  }
+
+  function goLogIn() {
+    goto('./../login')
   }
 </script>
 
@@ -14,11 +32,15 @@
     <button on:click={goHomePage} class="btn btn-ghost normal-case text-xl">Next Job DB</button>
     <div class="flex items-center mr-3">
         <div class="dropdown">
+          {#if !userLoggedIn || userLoggedOut}
             <label tabindex="0" class="btn btn-active m-1">Sign Up / Log In</label>
             <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
               <li><a on:click={goSignUp}>Sign Up</a></li>
-              <li><a>Log In</a></li>
+              <li><a on:click={goLogIn}>Log In</a></li>
             </ul>
+          {:else}
+            <button on:click={logUserOut} class="btn btn-active">Log Out</button>
+          {/if}
             <button class="btn btn-active">Post Jobs</button>
           </div>
     </div>    
