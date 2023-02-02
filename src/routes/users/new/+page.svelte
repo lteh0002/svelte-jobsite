@@ -1,14 +1,15 @@
 <script>
-    import Header from "../../Header.svelte";
     import { goto } from '$app/navigation';
     import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
     let formErrors = {}
+
     function goHomePage() {
         goto('http://localhost:5173')
     }
 
-    async function postSignUp() {
-        goto('./../accountcreated')
+    export async function postSignUp() {
+        localStorage.setItem("newUser", true)
+        goto('./../login')
     }
 
     async function createUser(e) {
@@ -47,7 +48,6 @@
 
 </script>
 
-<Header/>
 <h1 class="text-center text-3xl mt-5 font-bold">Create an Account to Post a Job</h1>
 <div class="text-center">
     <a class="link-hover italic" href="/login"

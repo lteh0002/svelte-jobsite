@@ -8,17 +8,29 @@
       goto('./../..')
     }
 
+    function goUpdate() {
+      goto(`./${data.job.id}/update`)
+    }
+
+    let obtainDataFromLocalStrage= localStorage.getItem("auth")
+    let parseJSON = JSON.parse(obtainDataFromLocalStrage)
+    let userID = parseJSON.userId
     export let data;
 </script>
   
-<Header />
   <div class="p-10">
     <div class="flex">
       <div class="flex-1">
         <h1 class="text-3xl font-extrabold">{data.job.title}</h1>
         <p class="text-xl">{data.job.employer}</p>
       </div>
-      <button on:click={goHome} class="btn btn-active">Back to Homepage</button>
+
+      <div>
+        {#if data.job.user == userID}
+          <button on:click={goUpdate} class="btn btn-active">Edit</button>
+        {/if}
+        <button on:click={goHome} class="btn btn-active">Back to Homepage</button>
+      </div>
     </div>
   
     <div class="flex flex-row w-full mt-8">

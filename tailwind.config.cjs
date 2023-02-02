@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
+  darkMode: 'class',
   theme: {
     extend: {},
   },
@@ -9,7 +10,7 @@ module.exports = {
     require("daisyui")
   ],
   daisyui: {
-    themes: ["cmyk", "dracula"],
+    themes: ["cmyk", "dracula", "dark", "light"],
     darkTheme: "dracula",
   },
 }

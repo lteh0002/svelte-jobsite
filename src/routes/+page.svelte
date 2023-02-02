@@ -9,7 +9,6 @@
   }
 </script>
 
-<Header />
 <h1 class="text-center text-3xl mt-5 font-bold">Find Your Next Dream Job Here!</h1>
 <div class="flex flex-col items-center gap-3">
   {#each data.jobs as job}
