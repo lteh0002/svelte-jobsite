@@ -5,8 +5,16 @@
 	export let data
 
   function applyJob(id) {
-    goto(`./jobs/${id}`)
+    goto(`/jobs/${id}`)
   }
+
+  function editJob(id) {
+    goto(`/jobs/${id}/update`)
+  }
+
+  let obtainDataFromLocalStrage= localStorage.getItem("auth")
+  let parseJSON = JSON.parse(obtainDataFromLocalStrage)
+  let userID = parseJSON.userId
 </script>
 
 <h1 class="text-center text-3xl mt-5 font-bold">Find Your Next Dream Job Here!</h1>
@@ -36,7 +44,10 @@
         </div>
                   
         <div class="card-actions justify-end">
-          <button on:click={applyJob(job.id)} class="btn btn-outline">Apply</button>
+          {#if job.user == userID}
+            <button on:click={editJob(job.id)} class="btn btn-outline">Edit Job</button>
+          {/if}
+          <button on:click={applyJob(job.id)} class="btn btn-outline">More Details</button>
         </div>
       </div>
     </div>

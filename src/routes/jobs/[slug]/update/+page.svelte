@@ -38,8 +38,6 @@
             const res = await resp.json()
             formErrors = res.data
         }
-
-
 }
 </script>
 
