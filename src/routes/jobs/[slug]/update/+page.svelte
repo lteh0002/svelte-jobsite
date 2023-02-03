@@ -4,6 +4,10 @@
     import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
     let formErrors = {}
 
+    function goBackJobs() {
+      goto(`/jobs/${data.job.id}`)
+    }
+
     async function updateJobs(e) {
         const getDatafromLocalStorage = localStorage.getItem("auth")
         const JSONtoObj = JSON.parse(getDatafromLocalStorage)
@@ -33,7 +37,7 @@
         }) //https://codeinu.net/language/javascript/c548269-cors-fetch-method-post-headers-content-type-application-json
 
         if (resp.status == 200) {
-            goto(`./../${data.job.id}`)
+            goto(`/jobs/${data.job.id}`)
         } else {
             const res = await resp.json()
             formErrors = res.data
@@ -42,14 +46,14 @@
 </script>
 
 <form on:submit={updateJobs} class="flex flex-col items-center">
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Job title</span>
         </label>
         <input type="text" name="jobtitle" value={data.job.title} class="input input-bordered w-full" required/>
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Min Annual Compensation</span>
         </label>
@@ -63,7 +67,7 @@
         {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Max Annual Compensation</span>
         </label>
@@ -77,7 +81,7 @@
         {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Company Name</span>
         </label>
@@ -85,14 +89,14 @@
         
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Job Location</span>
         </label>
         <input type="text" name="location" value={data.job.location} class="input input-bordered w-full" required/>
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
     <label class="label">
         <span class="label-text text-xl">Description</span>
     </label>
@@ -102,7 +106,7 @@
     {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Requirements</span>
         </label>
@@ -112,7 +116,7 @@
         {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Application Instructions</span>
         </label>
@@ -122,8 +126,8 @@
         {/if}
     </div>
     
-    <div class="flex flex-col w-4/12 gap-8 mt-3">
+    <div class="flex flex-col w-8/12 sm:w-6/12 gap-4 m-4 sm:mt-5">
         <button class="btn">Update Job</button>
+        <button on:click={goBackJobs} class="btn">Back</button>
     </div>
 </form>
-

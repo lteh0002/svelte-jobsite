@@ -109,3 +109,11 @@ export async function isLoggedIn() {
     localStorage.removeItem("newUser")
     return true
   }
+
+  export async function isLocalStorageEmpty() {
+    if (localStorage.length == 0) {
+      localStorage.setItem("auth", JSON.stringify(emptyAuth));
+      loginStatus.logout()
+      return true
+    }
+  }

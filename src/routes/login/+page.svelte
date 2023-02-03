@@ -1,28 +1,26 @@
 <script>
-    import { authenticateUser } from './../../utils/auth.js';
+    import { authenticateUser, isLocalStorageEmpty } from './../../utils/auth.js';
     import { goto } from '$app/navigation';
     let formErrors = {}
     let result
+    let isLoginClicked = false
 
     async function userLogin (e) {
+        isLoginClicked = true
         e.preventDefault()
         result = await authenticateUser(e.target.username.value, e.target.password.value)
         if (result.success) {
             goto('./..')
         } else if (result.res.code == 400) {
             formErrors['errormessage'] = 'Invalid username or password'
+            isLoginClicked = false
         }
     }
 </script>
 
-<h1 class="text-center text-3xl mt-5 font-bold">Login</h1>
-<div class="text-center mt-1">
-    <a class="link-hover italic" href="./../users/new">
-       Don't have an account? Click here to create one.
-    </a>
-</div>
+<h1 class="text-center text-2xl mt-5 font-bold sm:text-3xl">Login</h1>
 <form on:submit={userLogin} class="flex flex-col items-center mt-4 gap-4">
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
           <span class="label-text text-xl">Username</span>
         </label>
@@ -32,7 +30,7 @@
         {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
           <span class="label-text text-xl">Password</span>
         </label>
@@ -42,7 +40,13 @@
         {/if}
     </div>
 
-    <div class="flex flex-col w-4/12 gap-8 mt-4">
-        <button class="btn">Login</button>
+    <div class="flex flex-col w-8/12 mt-4 sm:w-4/12 sm:gap-4">
+        <button class="btn"><button class="btn btn-square loading {isLoginClicked == true ? 'inline-flex' : 'hidden'}"></button>Login</button>
+        <div class="text-center">
+            <p><span class="hidden sm:inline">New User?</span> <br class="sm:hidden">
+            <span><a class="link-hover italic underline text-blue-600" href="./../users/new">
+            Click here to <span class="font-bold">CREATE</span> <span class="hidden sm:inline">one</span> <span class="sm:hidden">an account</span>
+             </a></span></p>
+        </div>
     </div>
 </form>

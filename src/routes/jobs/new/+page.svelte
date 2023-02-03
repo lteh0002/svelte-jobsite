@@ -3,6 +3,10 @@
     import { goto } from '$app/navigation';
     let formErrors = {}
 
+    function goHomePage() {
+        goto('/')
+    }
+
     async function createJobs(e) {
         const getDatafromLocalStorage = localStorage.getItem("auth")
         const JSONtoObj = JSON.parse(getDatafromLocalStorage)
@@ -40,14 +44,14 @@
 
 
 <form on:submit={createJobs} class="flex flex-col items-center">
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Job title</span>
         </label>
         <input type="text" name="jobtitle" class="input input-bordered w-full" required/>
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Min Annual Compensation</span>
         </label>
@@ -61,7 +65,7 @@
         {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Max Annual Compensation</span>
         </label>
@@ -75,7 +79,7 @@
         {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Company Name</span>
         </label>
@@ -83,14 +87,14 @@
         
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Job Location</span>
         </label>
         <input type="text" name="location" class="input input-bordered w-full" required/>
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12 sm:w-6/12">
         <label class="label">
             <span class="label-text text-xl">Description</span>
         </label>
@@ -100,7 +104,7 @@
     {/if}
 </div>
 
-<div class="form-control w-4/12">
+<div class="form-control w-8/12 sm:w-6/12">
     <label class="label">
         <span class="label-text text-xl">Requirements</span>
     </label>
@@ -110,7 +114,7 @@
     {/if}
 </div>
 
-<div class="form-control w-4/12">
+<div class="form-control w-8/12 sm:w-6/12">
     <label class="label">
         <span class="label-text text-xl">Application Instructions</span>
     </label>
@@ -120,8 +124,9 @@
     {/if}
 </div>
     
-<div class="flex flex-col w-4/12 gap-8 mt-3">
+<div class="flex flex-col w-8/12 gap-4 mt-4 mb-5 sm:w-6/12">
         <button class="btn">Post Job</button>
+        <button on:click={goHomePage} class="btn">Back</button>
 </div>
 </form>
 

@@ -4,12 +4,12 @@
     let formErrors = {}
 
     function goHomePage() {
-        goto('http://localhost:5173')
+        goto('/')
     }
 
     export async function postSignUp() {
         localStorage.setItem("newUser", true)
-        goto('./../login')
+        goto('/login')
     }
 
     async function createUser(e) {
@@ -48,14 +48,14 @@
 
 </script>
 
-<h1 class="text-center text-3xl mt-5 font-bold">Create an Account to Post a Job</h1>
+<h1 class="text-center text-xl mt-5 font-bold sm:text-3xl">Create an Account to Post a Job</h1>
 <div class="text-center">
-    <a class="link-hover italic" href="/login"
-        >Already have an account? Click here to login instead.
+    <a class="link-hover italic" href="/login">
+        <span class="hidden sm:inline">Already have an account?</span> Click here to <span class="font-bold">LOGIN</span> instead!
     </a>
 </div>
 <form on:submit={createUser} class="flex flex-col items-center mt-4 gap-4">
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12">
         <label class="label">
           <span class="label-text text-xl">Username</span>
         </label>
@@ -65,7 +65,7 @@
         {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12">
         <label class="label">
           <span class="label-text text-xl">Email</span>
         </label>
@@ -75,7 +75,7 @@
         {/if}
     </div>
     
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12">
         <label class="label">
           <span class="label-text text-xl">Password</span>
         </label>
@@ -85,7 +85,7 @@
         {/if}
     </div>
 
-    <div class="form-control w-4/12">
+    <div class="form-control w-8/12">
         <label class="label">
           <span class="label-text text-xl">Confirm Password</span>
         </label>
@@ -95,7 +95,7 @@
         {/if}
     </div>
 
-    <div class="flex flex-col w-4/12 gap-8 mt-4">
+    <div class="flex flex-col w-8/12 gap-3 mb-4 sm:gap-7 mt-5">
         <button class="btn">Create Account</button>
         <button on:click={goHomePage} class="btn">Back to Homepage</button>
     </div>
