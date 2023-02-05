@@ -19,6 +19,9 @@
     }
     themeChange(false)
     await isLoggedIn()
+    if (isLoggedIn() == true) {
+      redirected.set(false)
+    }
   })
 
   async function userLogOut() {
@@ -44,7 +47,7 @@
   }
 </script>
 
-<header class="flex justify-between items-center p-5">
+<header class="flex justify-between items-center m-5">
     <button on:click={goHomePage} class="btn btn-ghost normal-case text-xl">Next Job DB</button>
     <div class="flex items-center gap-2">
       <label class="swap swap-rotate ">
