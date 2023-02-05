@@ -38,14 +38,14 @@
 
 </script>
 
-  <div class="p-7">
+  <div class="p-6">
     <div class="flex justify-between items-center sm:items-start">
       <div class="flex flex-col basis-10/12">
         <h1 class="text-xl w-full font-extrabold sm:text-3xl sm:w-full">{data.job.title}</h1>
         <p class="text-sm sm:text-xl">{data.job.employer} <span class="sm:hidden">({data.job.location})</span></p>
       </div>
 
-      <div class="flex items-center gap-7 sm:gap-1 sm:mr-0">
+      <div class="flex items-center">
         {#if data.job.user == userID}
         <div class="dropdown dropdown-bottom dropdown-end pr-4 sm:hidden">
           <label tabindex="0" class="btn btn-circle btn-outline m-1"><i class="fa-solid fa-chevron-down"></i></label>
