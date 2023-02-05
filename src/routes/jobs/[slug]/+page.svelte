@@ -38,7 +38,7 @@
 
 </script>
 
-  <div class="pr-6 pl-7 pt-2">
+  <div class="p-5">
     <div class="flex justify-between items-center sm:items-start">
       <div class="flex flex-col basis-10/12">
         <h1 class="text-xl w-full font-extrabold sm:text-3xl sm:w-full">{data.job.title}</h1>

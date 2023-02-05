@@ -19,7 +19,7 @@
 <h1 class="text-center text-xl mt-5 font-bold sm:text-3xl">Find Your Next Dream Job Here!</h1>
 <div class="flex flex-col items-center gap-3 mb-10">
   {#each data.jobs as job}
-    <div class="card w-5/6 bg-base-100 shadow-xl">
+    <div on:click={applyJob(job.id)} class="card w-5/6 bg-base-100 shadow-xl hover:-translate-y-1 hover:transition hover:delay-75 sm:cursor-pointer">
       <div class="card-body">
         <div class="flex justify-between">
           <div>
@@ -59,7 +59,7 @@
           {#if job.user == userID}
             <button on:click={editJob(job.id)} class="hidden sm:btn sm:btn-outline mt-2">Edit Job</button>
           {/if}
-          <button on:click={applyJob(job.id)} class="btn btn-outline mt-2">More Details</button>
+          <button on:click={applyJob(job.id)} class="btn btn-outline mt-2 sm:hidden">More Details</button>
         </div>
       </div>
     </div>

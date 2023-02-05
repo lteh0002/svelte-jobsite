@@ -44,9 +44,9 @@
   }
 </script>
 
-<header class="flex justify-between p-3 items-center">
+<header class="flex justify-between items-center p-5">
     <button on:click={goHomePage} class="btn btn-ghost normal-case text-xl">Next Job DB</button>
-    <div class="flex items-center mr-3 gap-2">
+    <div class="flex items-center gap-2">
       <label class="swap swap-rotate ">
         <input type="checkbox" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS"/>
         {#if darkMode}
