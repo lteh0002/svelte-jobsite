@@ -90,7 +90,6 @@ export async function isLoggedIn() {
 
       return true
     }
-
     return false
   } catch {
     return false

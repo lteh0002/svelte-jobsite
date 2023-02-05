@@ -17,7 +17,7 @@
 </script>
 
 <h1 class="text-center text-xl mt-5 font-bold sm:text-3xl">Find Your Next Dream Job Here!</h1>
-<div class="flex flex-col items-center gap-3">
+<div class="flex flex-col items-center gap-3 mb-10">
   {#each data.jobs as job}
     <div class="card w-5/6 bg-base-100 shadow-xl">
       <div class="card-body">
@@ -39,7 +39,11 @@
         </span>
   
         <div class="hidden sm:inline-block">
-          {job.description.slice(0, 240)}...
+          {#if job.description.length < 241}
+            {job.description}
+          {:else}
+            {job.description.slice(0, 240)}...
+          {/if}
         </div>
   
         <div class="italic text-xs opacity-50 mt-2">
