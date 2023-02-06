@@ -35,7 +35,6 @@
             formErrors = res.message
         }
 }
-
 </script>
 
   <div class="m-5 flex flex-col lg:justify-center">
