@@ -53,7 +53,7 @@
     </div>
 
     <div class="flex flex-col w-8/12 mt-4 sm:w-4/12 sm:gap-4">
-        <button class="btn"><button class="btn btn-square loading {isLoginClicked == true ? 'inline-flex' : 'hidden'}"></button>Login</button>
+        <button class="btn"><button class="btn btn-ghost loading {isLoginClicked == true ? 'inline-flex' : 'hidden'}"></button><span class="{isLoginClicked == true ? 'hidden' : 'block'}">Login</span></button>
         <div class="text-center">
             <p><span class="hidden sm:inline">New User?</span> <br class="sm:hidden">
             <span><a class="link-hover italic underline text-blue-600" href="./../users/new">
