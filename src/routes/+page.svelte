@@ -37,11 +37,7 @@
           </div>
           {#if job.user == userID}
           <div class="mt-2 z-40 sm:hidden">
-            <div class="dropdown dropdown-bottom dropdown-end sm:hidden">
-              <label on:click={editJob(job.id)} tabindex="0" class="btn btn-ghost m-1">
-               <i class='far fa-edit cursor-pointer' style='font-size:24px'></i>
-              </label>
-            </div>    
+               <i on:click={editJob(job.id)} class='far fa-edit cursor-pointer' style='font-size:24px'></i>   
           </div>
           {/if}
         </div>
