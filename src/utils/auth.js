@@ -1,5 +1,5 @@
 import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
-import { writable }  from 'svelte/store';
+import { writable } from 'svelte/store';
 
 function setLogin() {
   const { subscribe, set } = writable(false);
@@ -14,51 +14,51 @@ function setLogin() {
 export const loginStatus = setLogin()
 
 export async function authenticateUser(username, password) {
-    const resp = await fetch(
-        PUBLIC_BACKEND_BASE_URL + '/api/collections/users/auth-with-password',
-        {
-          method: 'POST',
-          mode: 'cors',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            identity: username,
-            password
-          })
-        }
-      );
+  const resp = await fetch(
+    PUBLIC_BACKEND_BASE_URL + '/api/collections/users/auth-with-password',
+    {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        identity: username,
+        password
+      })
+    }
+  );
 
-      const res = await resp.json();
+  const res = await resp.json();
 
-      if (resp.status == 200) {
-        localStorage.setItem("auth", JSON.stringify({
-            "token": res.token,
-            "username": res.record.username,
-            "userId": res.record.id
-          }));
+  if (resp.status == 200) {
+    localStorage.setItem("auth", JSON.stringify({
+      "token": res.token,
+      "username": res.record.username,
+      "userId": res.record.id
+    }));
 
-          loginStatus.login()
-          return {
-            success: true,
-            res
-          }
-    } else {
-        return {
-            success: false,
-            res: res
-      }
+    loginStatus.login()
+    return {
+      success: true,
+      res
+    }
+  } else {
+    return {
+      success: false,
+      res: res
+    }
   }
 }
 
 export function getTokenFromLocalStorage() {
   const auth = localStorage.getItem("auth")
   if (auth) {
-      return JSON.parse(auth)["token"]
+    return JSON.parse(auth)["token"]
   }
   return null
 }
-  
+
 export async function isLoggedIn() {
   if (!getTokenFromLocalStorage()) {
     return false
@@ -94,25 +94,33 @@ export async function isLoggedIn() {
   } catch {
     return false
   }
-  }
+}
 
-  const emptyAuth = {
-    "token": "",
-    "username": "",
-    "userId": "",
-  }
-  
-  export function logOut() {
-    localStorage.setItem("auth", JSON.stringify(emptyAuth));
-    loginStatus.logout()
-    localStorage.removeItem("newUser")
-    return true
-  }
+const emptyAuth = {
+  "token": "",
+  "username": "",
+  "userId": "",
+}
+
+export function logOut() {
+  localStorage.setItem("auth", JSON.stringify(emptyAuth));
+  loginStatus.logout()
+  return true
+}
 
 export function getUserInfo() {
   let obtainDataFromLocalStorage = localStorage.getItem("auth")
   let parseJSON = JSON.parse(obtainDataFromLocalStorage)
   // eslint-disable-next-line no-unused-vars
-  let userInfo = parseJSON ? parseJSON : null
+  let userInfo = parseJSON
   return userInfo
+}
+
+export async function isLocalStorageEmpty() {
+  if (localStorage.length == 0) {
+    localStorage.setItem("auth", JSON.stringify(emptyAuth));
+    console.log(localStorage)
+    loginStatus.logout()
+    return true
+  }
 }
