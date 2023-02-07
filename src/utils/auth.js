@@ -119,7 +119,6 @@ export function getUserInfo() {
 export async function isLocalStorageEmpty() {
   if (localStorage.length == 0) {
     localStorage.setItem("auth", JSON.stringify(emptyAuth));
-    console.log(localStorage)
     loginStatus.logout()
     return true
   }
