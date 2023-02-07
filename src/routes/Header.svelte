@@ -1,10 +1,9 @@
 <script>
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
-  import {isLoggedIn, loginStatus} from './../utils/auth.js'
+  import { loginStatus, logOut } from './../utils/auth.js'
   import { themeChange } from 'theme-change'
-  import {redirected} from './../utils/alert.js'
-  import {logOut} from './../utils/auth.js'
+  import {isUserRedirectedFromPostJob} from './../utils/alert.js'
 
   let darkMode
 
@@ -21,29 +20,17 @@
 
   async function userLogOut() {
     logOut()
-    goHomePage()
-  }
-
-  export function goHomePage() {
     goto('/')
   }
 
-  function goSignUp() {
-    goto('/users/new')
-  }
-
   function goLogIn() {
-    redirected.set(false)
+    isUserRedirectedFromPostJob.set(false)
     goto('/login')
-  }
-
-  async function createJob() {
-    goto('/jobs/new')
   }
 </script>
 
 <header class="flex justify-between items-center m-5">
-    <button on:click={goHomePage} class="btn btn-ghost normal-case text-xl">Next Job DB</button>
+    <a href="/"><button class="btn btn-ghost normal-case text-xl">Next Job DB</button></a>
     <div class="flex items-center gap-2">
       <label class="swap swap-rotate ">
         <input type="checkbox" data-toggle-theme="dark,light" data-act-class="ACTIVECLASS"/>
@@ -56,13 +43,23 @@
         {/if}
       </label>
       <div class="hidden sm:block">
-        <button on:click={createJob} class="hidden sm:btn sm:btn-outline sm:w-50 sm:text-xs sm:w-30">Post Jobs</button>
+        <a href='/jobs/new'><button class="hidden sm:btn sm:btn-outline sm:w-50 sm:text-xs sm:w-30">Post Jobs</button></a>
         <div class="dropdown">
           {#if !$loginStatus}
           <div class="hidden sm:inline-block">
+            <!-- svelte-ignore a11y-positive-tabindex -->
+            <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+            <!-- svelte-ignore a11y-positive-tabindex -->
+            <!-- svelte-ignore a11y-label-has-associated-control -->
             <label tabindex="1" class="btn btn-outline m-1 w-30">Log In <span class="hidden sm:inline">/ Sign Up</span></label>
+            <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+            <!-- svelte-ignore a11y-positive-tabindex -->
             <ul tabindex="1" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a on:click={goSignUp}>Sign Up</a></li>
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <!-- svelte-ignore a11y-missing-attribute -->
+              <li><a href="/users/new">Sign Up</a></li>
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
+              <!-- svelte-ignore a11y-missing-attribute -->
               <li><a on:click={goLogIn}>Log In</a></li>
             </ul>
           </div>
@@ -72,17 +69,29 @@
           </div>
       </div>
       <div class="dropdown dropdown-bottom dropdown-end sm:hidden">
+        <!-- svelte-ignore a11y-label-has-associated-control -->
+        <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <label tabindex="0" class="btn btn-ghost m-1">
           <svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
         </label>
         {#if !$loginStatus}
+        <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a on:click={goSignUp}>Sign Up</a></li>
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-missing-attribute -->
+          <li><a href="/users/new">Sign Up</a></li>
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-missing-attribute -->
           <li><a on:click={goLogIn}>Log In</a></li>
         </ul>
         {:else}
+        <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
         <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a on:click={createJob}>Create Job</a></li>
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-missing-attribute -->
+          <li><a href="/jobs/new">Create Job</a></li>
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
+          <!-- svelte-ignore a11y-missing-attribute -->
           <li><a on:click={userLogOut}>Log Out</a></li>
         </ul>
         {/if}

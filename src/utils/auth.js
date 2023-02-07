@@ -109,10 +109,10 @@ export async function isLoggedIn() {
     return true
   }
 
-  export async function isLocalStorageEmpty() {
-    if (localStorage.length == 0) {
-      localStorage.setItem("auth", JSON.stringify(emptyAuth));
-      loginStatus.logout()
-      return true
-    }
-  }
+export function getUserInfo() {
+  let obtainDataFromLocalStorage = localStorage.getItem("auth")
+  let parseJSON = JSON.parse(obtainDataFromLocalStorage)
+  // eslint-disable-next-line no-unused-vars
+  let userInfo = parseJSON ? parseJSON : null
+  return userInfo
+}
