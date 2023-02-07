@@ -6,7 +6,6 @@
   const mq = window.matchMedia("(max-width: 640px)");
 
   function applyJob(id) {
-    console.log(event)
     if (mq.matches && event.target.innerHTML !== 'More Details') {
       return;
     } else if (!mq.matches && event.target.innerHTML == 'Edit Job') {

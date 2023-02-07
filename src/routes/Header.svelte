@@ -9,7 +9,6 @@
   let darkMode
 
   onMount(async () => {
-    // localStorage.removeItem('theme')
     if ((localStorage.theme === 'dark' || !('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       localStorage.setItem('theme', 'dark')
       darkMode = true
@@ -18,10 +17,6 @@
       darkMode = false
     }
     themeChange(false)
-    await isLoggedIn()
-    if (isLoggedIn() == true) {
-      redirected.set(false)
-    }
   })
 
   async function userLogOut() {
