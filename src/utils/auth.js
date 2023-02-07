@@ -117,11 +117,9 @@ export function getUserInfo() {
 }
 
 export async function isLocalStorageEmpty() {
-  if (localStorage.length == 0) {
+  if (!localStorage.getItem("auth")) {
     localStorage.setItem("auth", JSON.stringify(emptyAuth));
     loginStatus.logout()
     return true
-  } else if (!localStorage.getItem("auth")) {
-    localStorage.setItem("auth", JSON.stringify(emptyAuth));
   }
 }
