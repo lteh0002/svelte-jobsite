@@ -121,5 +121,7 @@ export async function isLocalStorageEmpty() {
     localStorage.setItem("auth", JSON.stringify(emptyAuth));
     loginStatus.logout()
     return true
+  } else if (!localStorage.getItem("auth")) {
+    localStorage.setItem("auth", JSON.stringify(emptyAuth));
   }
 }
