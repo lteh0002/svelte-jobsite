@@ -1,7 +1,8 @@
 import { writable } from 'svelte/store';
 
 function initializeAlertStore() {
-  const { subscribe, set } = writable(0);
+  const defaultValue = { message: null, type: null }
+  const { subscribe, set } = writable(defaultValue);
 
   return {
     subscribe,
