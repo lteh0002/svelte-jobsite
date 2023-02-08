@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import { loginStatus, logOut } from './../utils/auth.js';
 	import { themeChange } from 'theme-change';
-	import { isUserRedirectedFromPostJob } from './../utils/alert.js';
 
 	let darkMode;
 
@@ -30,7 +29,6 @@
 	}
 
 	function goLogIn() {
-		isUserRedirectedFromPostJob.set(false);
 		goto('/login');
 	}
 </script>

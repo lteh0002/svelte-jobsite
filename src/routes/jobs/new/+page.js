@@ -1,11 +1,12 @@
 import { redirect } from "@sveltejs/kit";
 import { isLoggedIn } from "../../../utils/auth.js";
-import {isUserRedirectedFromPostJob} from "../../../utils/alert";
+import { alerts } from "../../../utils/alert.js";
 
 /** @type {import('./$types').LayoutServerLoad} */
 export async function load() {
+  alerts.clearAlert();
   if (!(await isLoggedIn())) {
-    isUserRedirectedFromPostJob.set(true)
+    alerts.setAlert("Please login/sign up to create jobs", "warning")
     throw redirect(307, '/login');
   }
 }

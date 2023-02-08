@@ -21,7 +21,6 @@
 		goto(`/jobs/${id}/update`);
 	}
 </script>
-
 <h1 class="text-center text-xl mt-5 font-bold sm:text-3xl">Find Your Next Dream Job Here!</h1>
 <div class="flex flex-col items-center gap-3 mb-10">
 	{#each data.jobs as job}
