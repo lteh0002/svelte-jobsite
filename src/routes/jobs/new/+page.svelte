@@ -45,6 +45,7 @@
 
 <form on:submit={createJobs} class="flex flex-col items-center">
     <div class="form-control w-8/12 sm:w-6/12">
+        <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
             <span class="label-text text-xl">Job title</span>
         </label>
@@ -52,10 +53,12 @@
     </div>
 
     <div class="form-control w-8/12 sm:w-6/12">
+        <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
             <span class="label-text text-xl">Min Annual Compensation</span>
         </label>
         <input type="number" name="mincomp" class="input input-bordered w-full" required/>
+        <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
             <span class="label-text-alt">USD</span>
             <span class="label-text-alt">per annum</span>
@@ -66,10 +69,12 @@
     </div>
 
     <div class="form-control w-8/12 sm:w-6/12">
+        <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
             <span class="label-text text-xl">Max Annual Compensation</span>
         </label>
         <input type="number" name="maxcomp" class="input input-bordered w-full" required/>
+        <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
             <span class="label-text-alt">USD</span>
             <span class="label-text-alt">per annum</span>
@@ -80,6 +85,7 @@
     </div>
 
     <div class="form-control w-8/12 sm:w-6/12">
+        <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
             <span class="label-text text-xl">Company Name</span>
         </label>
@@ -88,6 +94,7 @@
     </div>
 
     <div class="form-control w-8/12 sm:w-6/12">
+        <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
             <span class="label-text text-xl">Job Location</span>
         </label>
@@ -95,6 +102,7 @@
     </div>
 
     <div class="form-control w-8/12 sm:w-6/12">
+        <!-- svelte-ignore a11y-label-has-associated-control -->
         <label class="label">
             <span class="label-text text-xl">Description</span>
         </label>
@@ -105,6 +113,7 @@
 </div>
 
 <div class="form-control w-8/12 sm:w-6/12">
+    <!-- svelte-ignore a11y-label-has-associated-control -->
     <label class="label">
         <span class="label-text text-xl">Requirements</span>
     </label>
@@ -115,6 +124,7 @@
 </div>
 
 <div class="form-control w-8/12 sm:w-6/12">
+    <!-- svelte-ignore a11y-label-has-associated-control -->
     <label class="label">
         <span class="label-text text-xl">Application Instructions</span>
     </label>
