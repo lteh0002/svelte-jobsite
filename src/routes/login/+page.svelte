@@ -15,7 +15,7 @@
 		if (result.success) {
 			goto('/');
 		} else if (result.res.code == 400) {
-      alerts.setAlert('Invalid credentials', 'warning');
+			alerts.setAlert('Invalid credentials', 'error');
 			formErrors['errormessage'] = 'Invalid username or password';
 			isLoginClicked = false;
 		}
