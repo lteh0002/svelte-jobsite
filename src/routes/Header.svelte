@@ -33,7 +33,7 @@
 	}
 </script>
 
-<header class="flex justify-between items-center m-5">
+<header class="flex justify-between items-center m-4">
 	<a href="/"><button class="btn btn-ghost normal-case text-xl">Next Job DB</button></a>
 	<div class="flex items-center gap-2">
 		<label class="swap swap-rotate ">
